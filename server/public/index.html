@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Status do Botão</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>Status do Botão</h1>
+  <p id="estado">Carregando...</p>
+  <script>
+    setInterval(() => {
+      fetch('/status')
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('estado').textContent = data.estado;
+        })
+        .catch(() => {
+          document.getElementById('estado').textContent = "Erro ao buscar dados";
+        });
+    }, 1000);
+  </script>
+</body>
+</html>
